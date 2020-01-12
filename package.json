@@ -1,0 +1,29 @@
+{
+  "name": "doodleblue",
+  "version": "1.0.0",
+  "description": "Coding test ",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rajasoundarya/doodleblue.git"
+  },
+  "author": "Rajasoundarya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rajasoundarya/doodleblue/issues"
+  },
+  "homepage": "https://github.com/Rajasoundarya/doodleblue#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.2.3",
+    "mongoose": "^5.5.5",
+    "nodemon": "^1.19.0"
+  }
+}
