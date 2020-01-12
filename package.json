@@ -4,7 +4,8 @@
   "description": "Coding test ",
   "main": "index.js",
   "scripts": {
-    "test": "npm start"
+    "test": "npm start",
+    "start": "nodemon server"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.2.3",
     "mongoose": "^5.5.5",
-    "nodemon": "^1.19.0"
+    "nodemon": "^1.19.0",
+    "socket.io": "^2.3.0"
   }
 }

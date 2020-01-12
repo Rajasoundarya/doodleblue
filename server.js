@@ -6,12 +6,40 @@ const Bcrypt = require("bcryptjs");
 
 const cors= require('cors');
 const { MongoClient, ObjectID } = require('mongodb');
-const PORT = 4000;
+const PORT = 3000;
 const url = 'mongodb://localhost:27017';
 const dbName = 'MyFirstApp';
 app.use(cors());
 app.use(bodyParser.json());
 
+var server = require('http').createServer(app);
+var io = require('socket.io')(server);
+
+app.get('/', function(req, res){
+  res.sendFile(__dirname + '/index.html');
+});
+
+app.post('/', (req, res)=>{
+    const { message, user } = req.body;
+    const socket = io();
+    socket.emit('chat message', message);
+})
+
+io.sockets.on('connection', (socket)=>{
+  console.log('a user connected');
+  socket.on('send message', (data)=>{
+      io.sockets.emit('new message', data);
+     // socket.broadcast.emit('hi');
+    console.log('message: ' + msg);
+  });
+  socket.on('disconnect', function(){
+    console.log('user disconnected');
+  });
+ // socket.broadcast.emit('hi');
+//   socket.on('chat message', function(msg){
+//     io.emit('chat message', msg);
+//   });
+});
 
 app.post('/auth/login', (req,res)=>{
 
@@ -93,6 +121,6 @@ function verifyToken(req, res, next){
   }
 }
 
-app.listen(PORT, ()=>{
+server.listen(PORT, ()=>{
   console.log('SERVER IS RUNNING !!');
 })
